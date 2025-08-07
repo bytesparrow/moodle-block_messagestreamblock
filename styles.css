@@ -1,0 +1,47 @@
+#messagestream-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 300px;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    resize: both;
+    overflow: hidden; /* Verhindert Scrollbalken der Gesamtbox */
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-header {
+    padding: 10px;
+    background: #f2f2f2;
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.popup-body {
+    padding: 10px;
+    overflow: auto;
+    flex-grow: 1;
+}
+
+
+
+
+/*änderungen für stream*/
+
+#messagestream-popup .reply-form-container , #messagestream-popup .p-avatar 
+{
+    display:none;
+}
+#messagestream-popup, #messagestream-popup *
+{
+    font-size: 98%;
+}

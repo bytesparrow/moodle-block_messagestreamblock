@@ -1,0 +1,21 @@
+{
+    "name": "bytesparrow/messagestreamblock",
+    "description": "A Moodle-block. It shows the interactive message stream. For MedienLabor+",
+    "type": "moodle-block",
+    "keywords": ["moodle", "communication"],
+    "license": "GPLv3",
+    "version": "v2.0-alpha1",
+    "authors": [
+        {
+            "name": "Bernhard Strehl",
+            "email": "moodle@bytesparrow.de",
+            "homepage": "https://www.bytesparrow.de",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "composer/installers": "~2.2",
+        "moodle/moodle": "v4.*"
+    }
+}

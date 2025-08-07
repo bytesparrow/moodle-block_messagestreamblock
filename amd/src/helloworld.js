@@ -1,0 +1,9 @@
+define(['jquery', 'core/str'], function($, Str) {
+    return {
+        init: function() {
+            Str.get_string('helloworld', 'block_messagestreamblock').then(function(message) {
+                alert(message);
+            });
+        }
+    };
+});

@@ -1,0 +1,37 @@
+<div class="block_messagestreamblock_container">
+    <button id="openPopup" class="btn btn-primary">{{buttonlabel}}</button>
+
+    <div id="messagestream-popup" class="messagestream-popup hidden">
+        <div class="popup-header" id="popupHeader">
+            <span class="popup-title">{{headertext}}</span>
+            <span class="popup-close" id="closePopup">&times;</span>
+        </div>
+        <div class="popup-body">
+            {{{messagestreamhtml}}}
+        </div>
+    </div>
+</div>
+
+            
+<div id="messagestream-popup" style="
+     display: none;
+     position: fixed;
+     top: 30%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     width: 600px;
+     height: 350px;
+     background: #fff;
+     border: 1px solid #ccc;
+     z-index: 1000;
+     box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+
+    <div id="messagestream-popup-header" style="background: #eee; padding: 5px; cursor: move;">
+        <span id="messagestream-popup-close" style="float:right; cursor:pointer;">❌</span>
+        <strong>{{{headertext}}}</strong>
+    </div>
+
+    <div id="messagestream-container" style="padding: 10px; overflow: scroll; width: 100%; height:90%;">
+        {{{messagestreamhtml}}}
+    </div>
+</div>
