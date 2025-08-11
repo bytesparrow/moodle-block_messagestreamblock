@@ -7,7 +7,7 @@ define(['jquery'], function ($) {
                 return;
             }
 
-            const $block = $('[data-block="messagestream"]');
+            const $block = $('[data-block="messagestreamblock"]');
             const $toc = $('section.block_book_toc.block_fake'); // oder andere geeignete Referenz
 
             if ($block.length && $toc.length) {
