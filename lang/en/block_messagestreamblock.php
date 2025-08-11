@@ -7,3 +7,5 @@ $string['askquestion'] = 'Ask a question';
 $string['popupheader'] = 'Ask question';
 $string['config_blockatfirstposition'] = 'Show block before book TOC';
 $string['config_blockshowheader'] = 'Show block title';
+$string['warningexperimental'] = '<b>Warning:</b> This feature is experimental. Be advised to use it carefully.';
+$string['aicontextrefinement'] = 'In your answer focus on this topic / chapter: ';
