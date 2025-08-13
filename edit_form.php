@@ -25,6 +25,10 @@ class block_messagestreamblock_edit_form extends block_edit_form {
     $mform->addElement('advcheckbox', 'config_firstposition', get_string('config_blockatfirstposition', 'block_messagestreamblock'));
     $mform->setDefault('config_firstposition', 1); // Default of "yes"
     $mform->setType('config_firstposition', PARAM_BOOL);
+    
+    $mform->addElement('editor', 'config_textbeforestream', get_string('config_textbeforestream', 'block_messagestreamblock'), array('rows' => 3, 'cols' => 60));
+      $mform->setType('config_textbeforestream', PARAM_RAW);
+            $mform->addHelpButton('config_textbeforestream', 'config_textbeforestream', 'block_messagestreamblock');
   }
 
 }

@@ -9,7 +9,9 @@
 namespace block_messagestreamblock\output;
 
 class renderer extends \plugin_renderer_base {
-
+  static $refinement_intro = 
+    "# SONSTIGE FOKUSSIERUNG / VERFEINERUNG \n\n";
+  
   public function render_content(?\stdClass $config = null): string {
     global $PAGE, $USER;
 
@@ -20,12 +22,10 @@ class renderer extends \plugin_renderer_base {
     if (!empty($config->firstposition)) {
       $this->page->requires->js_call_amd('block_messagestreamblock/bookfix', 'init');
     }
-
-
-
+ 
     $data = [
       'buttonlabel' => get_string('askquestion', 'block_messagestreamblock'),
-      'textbeforestream' => get_string('warningexperimental', 'block_messagestreamblock'),
+      'textbeforestream' => format_text($config->textbeforestream["text"],FORMAT_HTML),
       'headertext' => $config->title ?? get_string('pluginname', 'block_messagestreamblock'),
       // Beispiel für Konfigurationswert – falls gesetzt
       'customtitle' => $this->config->title ?? ''
@@ -45,11 +45,13 @@ class renderer extends \plugin_renderer_base {
     $sitename = $site->shortname;
     $removefromtitle = array(get_string('course', 'core') . ":", $sitename, $PAGE->course->fullname, $PAGE->course->shortname, "|", ":");
     $contexttitle = trim(str_replace($removefromtitle, "", $currentpagetitle));
-
+    $contexttitle_clear = html_entity_decode($contexttitle); // Removes special chars.
     //yes, send Context
-    if ($contexttitle) {
-      $stream_options["promptRefinement"] = get_string("aicontextrefinement", "block_messagestreamblock") . $contexttitle;
+    if ($contexttitle_clear) {
+      $stream_options["promptRefinement"] = '{{ DefaultSystemPrompt }}'."\n".self::$refinement_intro.get_string("aicontextrefinement", "block_messagestreamblock") . $contexttitle_clear;
     }
+    /*$stream_options["promptRefinement"] = '{{ DefaultSystemPrompt }}'."\n"
+      . "mach was cooles!";*/
 
     // Use StreamService to get context and render the stream
     $service = new \local_nmstream\StreamService();

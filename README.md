@@ -4,6 +4,8 @@ Ein Moodle-Block-Plugin für Moodle 4.5+, das einen interaktiven Button in der S
 
 Im Popup wird der **Message Stream** angezeigt, bereitgestellt durch das Plugin [`local_nmstream`](https://github.com/n-multimedia/local_nmstream).  
 
+Dieses Plugin kann z.B. als virtueller Assistent genutzt werden
+
 ---
 
 ## Features
