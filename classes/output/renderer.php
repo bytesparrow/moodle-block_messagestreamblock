@@ -10,7 +10,7 @@ namespace block_messagestreamblock\output;
 
 class renderer extends \plugin_renderer_base {
   static $refinement_intro = 
-    "# SONSTIGE FOKUSSIERUNG / VERFEINERUNG \n\n";
+    "\n\n### SONSTIGE FOKUSSIERUNG / VERFEINERUNG \n\n";
   
   public function render_content(?\stdClass $config = null): string {
     global $PAGE, $USER;
@@ -48,7 +48,7 @@ class renderer extends \plugin_renderer_base {
     $contexttitle_clear = html_entity_decode($contexttitle); // Removes special chars.
     //yes, send Context
     if ($contexttitle_clear) {
-      $stream_options["promptRefinement"] = '{{ DefaultSystemPrompt }}'."\n".self::$refinement_intro.get_string("aicontextrefinement", "block_messagestreamblock") . $contexttitle_clear;
+      $stream_options["promptRefinement"] = self::$refinement_intro.get_string("aicontextrefinement", "block_messagestreamblock") . $contexttitle_clear;
     }
     /*$stream_options["promptRefinement"] = '{{ DefaultSystemPrompt }}'."\n"
       . "mach was cooles!";*/
