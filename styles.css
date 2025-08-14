@@ -5,14 +5,15 @@
     transform: translate(-50%, -50%);
     width: 700px;
     height: 400px;
+    max-width: 90%;
     background: white;
     border: 1px solid #ccc;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     resize: both;
     overflow: hidden; /* Verhindert Scrollbalken der Gesamtbox */
-    z-index: 9999;
     display: flex;
     flex-direction: column;
+    z-index: 1036;
 }
 
 .popup-header {
@@ -25,6 +26,9 @@
     font-weight: bold;
     flex-shrink: 0;
 }
+.popup-header .popup-close {
+    cursor: pointer;
+}
 
 .popup-body {
     padding: 10px;
@@ -33,6 +37,36 @@
 }
 
 
+/**
+MOBILE
+**/
+
+@media (max-width: 991.98px) {
+    #messagestream-popup
+    {
+        display: block;
+        resize: none;
+        width: 100%;
+        max-width: 100%;
+        left: 0 !important;
+        top: 0 !important;
+        position: relative;
+        box-shadow: none;
+    }
+    #messagestream-popup .popup-body {
+        overflow: scroll;
+        height: 89%;
+    }
+
+    #messagestream-popup .comment-controls .comment-options {
+        display: block;
+        /*display: none; wäre auch möglich*/
+    }
+
+    #messagestream-popup .comment-controls  .action-buttons .p-button {
+        display: block;
+    }
+}
 
 
 /*änderungen für stream*/
@@ -43,5 +77,5 @@
 }
 #messagestream-popup, #messagestream-popup *
 {
-    font-size: 98%;
+    font-size: 98.8%;
 }
