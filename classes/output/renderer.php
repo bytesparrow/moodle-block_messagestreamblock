@@ -48,9 +48,9 @@ class renderer extends \plugin_renderer_base {
     $contexttitle_clear = html_entity_decode($contexttitle); // Removes special chars.
     //yes, send Context
     if ($contexttitle_clear) {
-      $stream_options["promptRefinement"] = "{{ DefaultSystemPrompt }}".self::$refinement_intro.get_string("aicontextrefinement", "block_messagestreamblock") . $contexttitle_clear;
+      $stream_options["promptOverride"] = "{{ DefaultSystemPrompt }}".self::$refinement_intro.get_string("aicontextrefinement", "block_messagestreamblock") . $contexttitle_clear;
     }
-    /*$stream_options["promptRefinement"] = '{{ DefaultSystemPrompt }}'."\n"
+    /*$stream_options["promptOverride"] = '{{ DefaultSystemPrompt }}'."\n"
       . "mach was cooles!";*/
 
     // Use StreamService to get context and render the stream
