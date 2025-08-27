@@ -5,8 +5,11 @@
     border-radius: 0;
 }
 #messagestream-popup .comment-form  .p-panel-content
+{ 
+}
+#messagestream-popup .comment-form  .p-panel-content  .p-editor-content.ql-container
 {
-    padding-left: 30%;
+    width: 40%;
 }
 #messagestream-popup .greeting
 {
@@ -18,5 +21,6 @@
 
 #messagestream-popup .greeting .text{
     width: 40%;
+    margin-left: 50%;
     font-size: 12.5px;
 }
