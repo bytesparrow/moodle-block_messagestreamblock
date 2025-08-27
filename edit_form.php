@@ -35,15 +35,21 @@ class block_messagestreamblock_edit_form extends block_edit_form {
 
 
 
-//text before
+    //text before
     $mform->addElement('editor', 'config_textbeforestream', get_string('config_textbeforestream', 'block_messagestreamblock'), array('rows' => 3, 'cols' => 60));
     $mform->setType('config_textbeforestream', PARAM_RAW);
     $mform->addHelpButton('config_textbeforestream', 'config_textbeforestream', 'block_messagestreamblock');
 
-    //greetiong
+    //greeting
     $mform->addElement('editor', 'config_greetings', get_string('config_greetings', 'block_messagestreamblock'), array('rows' => 30, 'cols' => 60));
     $mform->setType('config_greetings', PARAM_CLEANHTML);
     $mform->addHelpButton('config_greetings', 'config_greetings', 'block_messagestreamblock');
+
+    //promptrefinement
+    $mform->addElement('textarea', 'config_promptrefinement', get_string('config_promptrefinement', 'block_messagestreamblock'), array('rows' => 10, 'cols' => 60));
+    $mform->addHelpButton('config_promptrefinement', 'config_promptrefinement', 'block_messagestreamblock');
+    $mform->setType('config_promptrefinement', PARAM_TEXT);
+    $mform->setDefault('config_promptrefinement', "");
   }
 
 }

@@ -12,4 +12,6 @@ $string['config_textbeforestream'] = 'Text before the stream';
 $string['config_textbeforestream_help'] = 'This text will be displayed above the stream';
 $string['config_greetings'] = 'Greeting phrases';
 $string['config_greetings_help'] = 'Here you can create various greeting phrases. When the window is opened, one will be displayed at random.';
+$string['config_promptrefinement'] = 'Prompt refinement';
+$string['config_promptrefinement_help'] = 'Refine the prompt sent to the ai by giving meaningful instructions.';
 $string['aicontextrefinement'] = 'In your answer focus on this topic / chapter: ';

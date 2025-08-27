@@ -12,4 +12,6 @@ $string['config_textbeforestream'] = 'Text vor dem Stream';
 $string['config_textbeforestream_help'] = 'Dieser Text wird oberhalb des Streams angezeigt';
 $string['config_greetings'] = 'Begrüßungs-Floskeln';
 $string['config_greetings_help'] = 'Hier können Sie diverse Begrüßungsfloskeln anlegen. Beim Öffnen des Fensters wird zufällig eine angezeigt. Eine Floskel pro Zeile.';
+$string['config_promptrefinement'] = 'Prompt-Verfeinerung';
+$string['config_promptrefinement_help'] = 'Verfeinere den an die KI gesendeten Prompt, indem du aussagekräftige Anweisungen gibst.';
 $string['aicontextrefinement'] = 'Fokussiere dich bei der Beantwortung auf folgenden Abschnitt / Kapitel: ';

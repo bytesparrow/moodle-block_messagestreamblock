@@ -56,13 +56,30 @@ class renderer extends \plugin_renderer_base {
     $removefromtitle = array(get_string('course', 'core') . ":", $sitename, $PAGE->course->fullname, $PAGE->course->shortname, "|", ":");
     $contexttitle = trim(str_replace($removefromtitle, "", $currentpagetitle));
     $contexttitle_clear = html_entity_decode($contexttitle); // Removes special chars.
+    $promptoverride = "";
+    
     //yes, send Context
     if ($contexttitle_clear) {
-      $stream_options["promptOverride"] = "{{ DefaultSystemPrompt }}" . self::$refinement_intro . get_string("aicontextrefinement", "block_messagestreamblock") . $contexttitle_clear;
+      $promptoverride = "{{ DefaultSystemPrompt }}" . self::$refinement_intro . get_string("aicontextrefinement", "block_messagestreamblock") . $contexttitle_clear;
+    }
+    if($config->promptrefinement)
+    {
+      if($promptoverride)
+      {
+        $promptoverride .= "\n\n".$config->promptrefinement;
+      }
+      else
+      {
+        $promptoverride = "{{ DefaultSystemPrompt }}" ."\n\n".$config->promptrefinement;
+      }
     }
     /* $stream_options["promptOverride"] = '{{ DefaultSystemPrompt }}'."\n"
       . "mach was cooles!"; */
 
+    if($promptoverride)
+    {
+      $stream_options["promptOverride"] = $promptoverride;
+    }
     // Use StreamService to get context and render the stream
     $service = new \local_nmstream\StreamService();
     $coursecontext = $service->getStreamRootContext(true);
