@@ -1,0 +1,22 @@
+
+#messagestream-popup .comment-form .p-panel.p-component:first-of-type 
+{
+    border-top:none;
+    border-radius: 0;
+}
+#messagestream-popup .comment-form  .p-panel-content
+{
+    padding-left: 30%;
+}
+#messagestream-popup .greeting
+{
+    padding-left: 10px;
+    padding-top: 10px;
+    border: 1px solid #e2e8f0;
+    border-bottom:none;
+}
+
+#messagestream-popup .greeting .text{
+    width: 40%;
+    font-size: 12.5px;
+}
