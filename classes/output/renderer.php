@@ -22,8 +22,9 @@ class renderer extends \plugin_renderer_base {
     if (!empty($config->firstposition)) {
       $this->page->requires->js_call_amd('block_messagestreamblock/bookfix', 'init');
     }
-    $greetings = $config->greeting;
+    $greetings = $config->greetings;
     $greetingsarray = explode("\n", format_text($greetings["text"], FORMAT_HTML));
+    
     $randkey = array_rand($greetingsarray);
     $greeting = $greetingsarray[$randkey];
     $greetingclean = str_replace(array("<p>", "</p>"), "", $greeting);
