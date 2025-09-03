@@ -1,19 +1,20 @@
 <div class="block_messagestreamblock_container">
-    <button id="openPopup" class="btn btn-primary">{{buttonlabel}}</button>
-
-    <div id="messagestream-popup" class="messagestream-popup hidden">
-        <div class="popup-header" id="popupHeader">
-            <span class="popup-title">{{headertext}}</span>
-            <span class="popup-close" id="closePopup">&times;</span>
-        </div>
-        <div class="popup-body">
-            {{{textbeforestream}}}
-            <div class="greeting">
-                <div class="text">
-                    {{{greeting}}}
-                </div>
+    <button id="messagestream-open-popup-button" class="btn btn-primary">{{buttonlabel}}</button>
+    <div id="messagestream-popup-container">
+        <div id="messagestream-popup" class="messagestream-popup hidden">
+            <div class="popup-header" id="messagestream-popup-header">
+                <span class="popup-title">{{headertext}}</span>
+                <span class="popup-close" id="messagestream-close-popup-button">&times;</span>
             </div>
-            {{{messagestreamhtml}}}
+            <div class="popup-body">
+                {{{textbeforestream}}}
+                <div class="greeting">
+                    <div class="text">
+                        {{{greeting}}}
+                    </div>
+                </div>
+                {{{messagestreamhtml}}}
+            </div>
         </div>
-    </div>
+    </div>    
 </div>

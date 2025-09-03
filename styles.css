@@ -4,7 +4,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 700px;
-    height: 400px;
+    height: 650px;
+    max-height: 80%;
     max-width: 90%;
     background: white;
     border: 1px solid #ccc;
@@ -13,7 +14,7 @@
     overflow: hidden; /* Verhindert Scrollbalken der Gesamtbox */
     display: flex;
     flex-direction: column;
-    z-index: 1036;
+    z-index: 1100;
 }
 
 .popup-header {
@@ -28,6 +29,7 @@
 }
 .popup-header .popup-close {
     cursor: pointer;
+    font-size: 20px !important;
 }
 
 .popup-body {
@@ -54,10 +56,16 @@ MOBILE
         box-shadow: none;
     }
     #messagestream-popup .popup-body {
-        overflow: scroll;
+        overflow-x: hidden;
+        overflow-y: scroll;
         height: 89%;
+        scrollbar-width: thin;
+        scrollbar-color: #6a737b #f8f9fa;
     }
 
+    #messagestream-popup .popup-body .comments-wrapper{
+        overflow-x: hidden;
+    }
     #messagestream-popup .comment-controls .comment-options {
         display: block;
         /*display: none; wäre auch möglich*/
@@ -78,4 +86,14 @@ MOBILE
 #messagestream-popup, #messagestream-popup *
 {
     font-size: 98.8%;
+}
+
+/*SAFARI-fix*/
+.drawercontent.drag-container 
+{
+    overflow:visible;
+}
+.drawercontent .d-print-none 
+{
+    overflow:scroll;
 }

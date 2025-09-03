@@ -24,3 +24,10 @@
     margin-left: 50%;
     font-size: 12.5px;
 }
+
+@media (max-width: 991.98px) {
+    #messagestream-popup .comment-form  .p-panel-content  .p-editor-content.ql-container
+    {
+        width: 80%;
+    }
+}

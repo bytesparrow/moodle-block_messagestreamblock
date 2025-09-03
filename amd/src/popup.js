@@ -1,8 +1,8 @@
 export const init = () => {
     const popup = document.getElementById('messagestream-popup');
-    const header = document.getElementById('popupHeader');
-    const openBtn = document.getElementById('openPopup');
-    const closeBtn = document.getElementById('closePopup');
+    const header = document.getElementById('messagestream-popup-header');
+    const openBtn = document.getElementById('messagestream-open-popup-button');
+    const closeBtn = document.getElementById('messagestream-close-popup-button');
 
     openBtn.addEventListener('click', () => {
         popup.classList.remove('hidden');
@@ -61,4 +61,34 @@ export const init = () => {
     document.addEventListener('mouseup', () => {
         isDragging = false;
     });
+
+
+
 };
+
+/**
+ * js solution to safari bug. solved via css
+ * moves the popup to different containers since safari has a  stupid bug
+ * @param {bool} to_body  move to body or to the container
+
+function movePopupAround(to_body=false)
+{return;
+    const popup = document.getElementById('messagestream-popup');
+    const container = document.getElementById('messagestream-popup-container');
+    const body = document.body;
+
+    if(to_body)
+    {
+         body.appendChild(popup);
+    }
+    else
+    {
+         container.appendChild(popup);
+    }
+
+}
+window.addEventListener('resize', function (){
+     const isMobile = window.matchMedia('(max-width: 991.98px)').matches;
+     return movePopupAround(!isMobile);
+}, true);
+ *  */
