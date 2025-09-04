@@ -18,13 +18,18 @@ class renderer extends \plugin_renderer_base {
 
     $this->page->requires->js_call_amd('block_messagestreamblock/popup', 'init');
 
-
-    if (!empty($config->firstposition)) {
-      $this->page->requires->js_call_amd('block_messagestreamblock/bookfix', 'init');
+    if (strpos($PAGE->url->out(false), '/mod/book/view.php') !== false) {
+      $this->page->requires->css('/blocks/messagestreamblock/style_safari_fix.css');
+      
+      if (!empty($config->firstposition)) {
+        $this->page->requires->js_call_amd('block_messagestreamblock/bookfix', 'init');
+      }
     }
+
+
     $greetings = $config->greetings;
     $greetingsarray = explode("\n", format_text($greetings["text"], FORMAT_HTML));
-    
+
     $randkey = array_rand($greetingsarray);
     $greeting = $greetingsarray[$randkey];
     $greetingclean = str_replace(array("<p>", "</p>"), "", $greeting);
@@ -58,27 +63,23 @@ class renderer extends \plugin_renderer_base {
     $contexttitle = trim(str_replace($removefromtitle, "", $currentpagetitle));
     $contexttitle_clear = html_entity_decode($contexttitle); // Removes special chars.
     $promptoverride = "";
-    
+
     //yes, send Context
     if ($contexttitle_clear) {
       $promptoverride = "{{ DefaultSystemPrompt }}" . self::$refinement_intro . get_string("aicontextrefinement", "block_messagestreamblock") . $contexttitle_clear;
     }
-    if($config->promptrefinement)
-    {
-      if($promptoverride)
-      {
-        $promptoverride .= "\n\n".$config->promptrefinement;
+    if ($config->promptrefinement) {
+      if ($promptoverride) {
+        $promptoverride .= "\n\n" . $config->promptrefinement;
       }
-      else
-      {
-        $promptoverride = "{{ DefaultSystemPrompt }}" ."\n\n".$config->promptrefinement;
+      else {
+        $promptoverride = "{{ DefaultSystemPrompt }}" . "\n\n" . $config->promptrefinement;
       }
     }
     /* $stream_options["promptOverride"] = '{{ DefaultSystemPrompt }}'."\n"
       . "mach was cooles!"; */
 
-    if($promptoverride)
-    {
+    if ($promptoverride) {
       $stream_options["promptOverride"] = $promptoverride;
     }
     // Use StreamService to get context and render the stream

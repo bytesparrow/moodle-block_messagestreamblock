@@ -87,13 +87,3 @@ MOBILE
 {
     font-size: 98.8%;
 }
-
-/*SAFARI-fix*/
-.drawercontent.drag-container 
-{
-    overflow:visible;
-}
-.drawercontent .d-print-none 
-{
-    overflow:scroll;
-}

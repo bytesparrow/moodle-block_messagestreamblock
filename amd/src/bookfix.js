@@ -1,11 +1,7 @@
 define(['jquery'], function ($) {
     return {
         init: function () {
-            const isBook = window.location.pathname.includes('/mod/book/view.php');
-            if (!isBook)
-            {
-                return;
-            }
+
 
             const $block = $('[data-block="messagestreamblock"]');
             const $toc = $('section.block_book_toc.block_fake'); // oder andere geeignete Referenz

@@ -1,0 +1,8 @@
+/*SAFARI-fix*/
+.drawercontent.drag-container {
+    overflow:visible;
+}
+
+.drawercontent .d-print-none {
+    overflow:auto;
+}
