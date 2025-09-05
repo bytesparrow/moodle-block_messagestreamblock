@@ -9,7 +9,7 @@
 }
 #messagestream-popup .comment-form  .p-panel-content  .p-editor-content.ql-container
 {
-    width: 40%;
+    width: 85%;
 }
 #messagestream-popup .greeting
 {
@@ -20,9 +20,13 @@
 }
 
 #messagestream-popup .greeting .text{
-    width: 40%;
-    margin-left: 50%;
+    width: 85%;
+    margin-left: 10%;
     font-size: 12.5px;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 12px; /* runde Ecken */
+    padding: 1em;
+    background: linear-gradient(180deg, #FAFAFB 0%, #FEFEFE 100%); /* sehr helles Grau ->  Weiß */
 }
 
 @media (max-width: 991.98px) {
