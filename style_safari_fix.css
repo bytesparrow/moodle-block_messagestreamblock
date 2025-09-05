@@ -1,8 +1,10 @@
 /*SAFARI-fix*/
-.drawercontent.drag-container {
+.drawer-right  .drawercontent.drag-container {
     overflow:visible;
 }
 
-.drawercontent .d-print-none {
+.drawer-right .drawercontent .d-print-none {
     overflow:auto;
+    scrollbar-width: thin;
+    scrollbar-color: #6a737b #f8f9fa;
 }
