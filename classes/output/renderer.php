@@ -20,30 +20,32 @@ class renderer extends \plugin_renderer_base {
 
     if (strpos($PAGE->url->out(false), '/mod/book/view.php') !== false) {
       $this->page->requires->css('/blocks/messagestreamblock/style_safari_fix.css');
-      
+
       if (!empty($config->firstposition)) {
         $this->page->requires->js_call_amd('block_messagestreamblock/bookfix', 'init');
       }
     }
 
 
-    $greetings = $config->greetings;
-    $greetingsarray = explode("\n", format_text($greetings["text"], FORMAT_HTML));
+    $greetingclean = "";
+    if ($config) {
+      $greetings = $config->greetings;
+      $greetingsarray = explode("\n", format_text($greetings["text"], FORMAT_HTML));
 
-    $randkey = array_rand($greetingsarray);
-    $greeting = $greetingsarray[$randkey];
-    $greetingclean = str_replace(array("<p>", "</p>"), "", $greeting);
-    $greetingclean = trim($greetingclean);
-    if ($greetingclean) {
-      $this->page->requires->css('/blocks/messagestreamblock/style_greeting.css');
+      $randkey = array_rand($greetingsarray);
+      $greeting = $greetingsarray[$randkey];
+      $greetingclean = str_replace(array("<p>", "</p>"), "", $greeting);
+      $greetingclean = trim($greetingclean);
+      if ($greetingclean) {
+        $this->page->requires->css('/blocks/messagestreamblock/style_greeting.css');
+      }
     }
+
 
     $data = [
       'buttonlabel' => $config->buttonlabel ?? get_string('askquestion', 'block_messagestreamblock'),
-      'textbeforestream' => format_text($config->textbeforestream["text"], FORMAT_HTML),
+      'textbeforestream' => $config ? format_text($config->textbeforestream["text"], FORMAT_HTML) : '',
       'headertext' => $config->title ?? get_string('pluginname', 'block_messagestreamblock'),
-      // Beispiel für Konfigurationswert – falls gesetzt
-      'customtitle' => $this->config->title ?? '',
       'greeting' => $greetingclean
     ];
 
@@ -59,26 +61,26 @@ class renderer extends \plugin_renderer_base {
 
     $site = get_site();
     $sitename = $site->shortname;
-    
-    $editingstring  =get_string('coursetitleediting', 'core', array("course"=>$PAGE->course->fullname));
+
+    $editingstring = get_string('coursetitleediting', 'core', array("course" => $PAGE->course->fullname));
     $removefromtitle = array($editingstring, get_string('course', 'core') . ":", $sitename, $PAGE->course->fullname, $PAGE->course->shortname, "|", ":");
     $contexttitle = trim(str_replace($removefromtitle, "", $currentpagetitle));
 
     $contexttitle_clear = html_entity_decode($contexttitle); // Removes special chars.
     $promptoverride = "";
 
-        //yes, send Context
+    //yes, send Context
     if ($contexttitle_clear) {
-     $focustext = self::$refinement_intro . get_string("aicontextrefinement", "block_messagestreamblock") . $contexttitle_clear;
+      $focustext = self::$refinement_intro . get_string("aicontextrefinement", "block_messagestreamblock") . $contexttitle_clear;
     }
     else {
       $focustext = self::$refinement_intro . get_string("aicontextrefinementnonce", "block_messagestreamblock");
     }
-    
-    
 
-      $promptoverride = "{{ DefaultSystemPrompt }}" .$focustext;
-    if ($config->promptrefinement) {
+
+
+    $promptoverride = "{{ DefaultSystemPrompt }}" . $focustext;
+    if ($config && $config->promptrefinement) {
       if ($promptoverride) {
         $promptoverride .= "\n\n" . $config->promptrefinement;
       }
