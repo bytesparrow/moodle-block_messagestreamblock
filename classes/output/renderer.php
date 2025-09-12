@@ -59,15 +59,25 @@ class renderer extends \plugin_renderer_base {
 
     $site = get_site();
     $sitename = $site->shortname;
-    $removefromtitle = array(get_string('course', 'core') . ":", $sitename, $PAGE->course->fullname, $PAGE->course->shortname, "|", ":");
+    
+    $editingstring  =get_string('coursetitleediting', 'core', array("course"=>$PAGE->course->fullname));
+    $removefromtitle = array($editingstring, get_string('course', 'core') . ":", $sitename, $PAGE->course->fullname, $PAGE->course->shortname, "|", ":");
     $contexttitle = trim(str_replace($removefromtitle, "", $currentpagetitle));
+
     $contexttitle_clear = html_entity_decode($contexttitle); // Removes special chars.
     $promptoverride = "";
 
-    //yes, send Context
+        //yes, send Context
     if ($contexttitle_clear) {
-      $promptoverride = "{{ DefaultSystemPrompt }}" . self::$refinement_intro . get_string("aicontextrefinement", "block_messagestreamblock") . $contexttitle_clear;
+     $focustext = self::$refinement_intro . get_string("aicontextrefinement", "block_messagestreamblock") . $contexttitle_clear;
     }
+    else {
+      $focustext = self::$refinement_intro . get_string("aicontextrefinementnonce", "block_messagestreamblock");
+    }
+    
+    
+
+      $promptoverride = "{{ DefaultSystemPrompt }}" .$focustext;
     if ($config->promptrefinement) {
       if ($promptoverride) {
         $promptoverride .= "\n\n" . $config->promptrefinement;

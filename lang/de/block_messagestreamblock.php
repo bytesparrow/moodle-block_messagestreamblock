@@ -15,3 +15,4 @@ $string['config_greetings_help'] = 'Hier können Sie diverse Begrüßungsfloskel
 $string['config_promptrefinement'] = 'Prompt-Verfeinerung';
 $string['config_promptrefinement_help'] = 'Verfeinere den an die KI gesendeten Prompt, indem du aussagekräftige Anweisungen gibst.';
 $string['aicontextrefinement'] = 'Fokussiere dich bei der Beantwortung auf folgenden Abschnitt / Kapitel: ';
+$string['aicontextrefinementnonce'] = 'Fokus: keiner';
