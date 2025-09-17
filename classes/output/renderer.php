@@ -10,7 +10,6 @@ namespace block_messagestreamblock\output;
 
 class renderer extends \plugin_renderer_base {
 
-  static $refinement_intro = "\n\n### SONSTIGE FOKUSSIERUNG / VERFEINERUNG \n\n";
 
   public function render_content(?\stdClass $config = null): string {
     global $PAGE, $CFG;
@@ -65,31 +64,28 @@ class renderer extends \plugin_renderer_base {
     $editingstring = get_string('coursetitleediting', 'core', array("course" => $PAGE->course->fullname));
     $removefromtitle = array($editingstring, get_string('course', 'core') . ":", $sitename, $PAGE->course->fullname, $PAGE->course->shortname, "|", ":");
     $contexttitle = trim(str_replace($removefromtitle, "", $currentpagetitle));
+    $contexttitle = str_replace("Kap ", "Kapitel ", $contexttitle);
 
     $contexttitle_clear = html_entity_decode($contexttitle); // Removes special chars.
     $promptoverride = "";
 
     //yes, send Context
     if ($contexttitle_clear) {
-      $focustext = self::$refinement_intro . get_string("aicontextrefinement", "block_messagestreamblock") . $contexttitle_clear;
+      $focustext = get_string("aicontextrefinementheading", "block_messagestreamblock") . get_string("aicontextrefinement", "block_messagestreamblock") . $contexttitle_clear;
     }
     else {
-      $focustext = self::$refinement_intro . get_string("aicontextrefinementnonce", "block_messagestreamblock");
+      $focustext = get_string("aicontextrefinementheading", "block_messagestreamblock") . get_string("aicontextrefinementnonce", "block_messagestreamblock");
     }
-
 
 
     $promptoverride = "{{ DefaultSystemPrompt }}" . $focustext;
     if ($config && $config->promptrefinement) {
-      if ($promptoverride) {
-        $promptoverride .= "\n\n" . $config->promptrefinement;
-      }
-      else {
-        $promptoverride = "{{ DefaultSystemPrompt }}" . "\n\n" . $config->promptrefinement;
-      }
+      $promptoverride .= "\n\n" . $config->promptrefinement;
     }
     /* $stream_options["promptOverride"] = '{{ DefaultSystemPrompt }}'."\n"
       . "mach was cooles!"; */
+
+
 
     if ($promptoverride) {
       $stream_options["promptOverride"] = $promptoverride;

@@ -15,4 +15,5 @@ $string['config_greetings_help'] = 'Here you can create various greeting phrases
 $string['config_promptrefinement'] = 'Prompt refinement';
 $string['config_promptrefinement_help'] = 'Refine the prompt sent to the ai by giving meaningful instructions.';
 $string['aicontextrefinement'] = 'In your answer focus on this topic / chapter: ';
+$string['aicontextrefinementheading'] = "\n\n### FOCUS\n\n";
 $string['aicontextrefinementnonce'] = 'Focus: none';

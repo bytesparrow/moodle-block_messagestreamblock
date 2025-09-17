@@ -78,10 +78,13 @@ MOBILE
 
 
 /*änderungen für stream*/
-
 #messagestream-popup .reply-form-container , #messagestream-popup .p-avatar 
 {
     display:none;
+}
+#messagestream-popup .child-comments 
+{
+    margin-top: 16px;
 }
 #messagestream-popup, #messagestream-popup *
 {
