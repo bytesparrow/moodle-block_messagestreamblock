@@ -10,9 +10,9 @@ namespace block_messagestreamblock\output;
 
 class renderer extends \plugin_renderer_base {
 
-
   public function render_content(?\stdClass $config = null): string {
-    global $PAGE, $CFG;
+    global $PAGE, $CFG, $COURSE;
+    $courseid = $COURSE->id;
 
 
     $this->page->requires->js_call_amd('block_messagestreamblock/popup', 'init');
@@ -48,11 +48,22 @@ class renderer extends \plugin_renderer_base {
       'greeting' => $greetingclean
     ];
 
+    $enableai = false;
+    //config-variable vom mod-messagestream holen
+    if (file_exists($CFG->dirroot . '/mod/messagestream/locallib.php')) {
+
+      require_once($CFG->dirroot . '/mod/messagestream/locallib.php');
+      $aicourses = get_messagestream_ai_activated_in_courses();
+      if (in_array($courseid, $aicourses)) {
+        $enableai = true;
+      }
+    }
+
     //set base stream options
     $stream_options = array(
-      "enableai" => true,
-      "default_privacy" => true,
-      "default_ai" => true);
+      "enableai" => $enableai,
+      "default_privacy" => $enableai,
+      "default_ai" => $enableai);
 
 
     //do we need to send  some context to the AI?

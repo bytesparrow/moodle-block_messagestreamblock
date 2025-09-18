@@ -19,6 +19,7 @@ Dieses Plugin kann z.B. als virtueller Assistent genutzt werden
 - Anzeige des Message Streams aus `local_nmstream`
 - Titel des Blocks kann über die Block-Konfiguration gesetzt werden
 - Internationalisierung (mehrsprachige Unterstützung via Sprachdateien)
+- Die Einstellung: "KI nur verfügbar in diesen Kursen: ..." wird im Plugin moodle-mod_messagestream eingestellt. Wenn dieses nicht existiert, wird keine KI genutzt.
 
 ---
 
