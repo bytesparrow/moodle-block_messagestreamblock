@@ -82,9 +82,9 @@ MOBILE
 {
     display:none;
 }
-#messagestream-popup .child-comments 
+#messagestream-popup div.child-comments::before
 {
-    margin-top: 16px;
+    display: none;
 }
 #messagestream-popup, #messagestream-popup *
 {
