@@ -16,6 +16,7 @@ class renderer extends \plugin_renderer_base {
 
 
     $this->page->requires->js_call_amd('block_messagestreamblock/popup', 'init');
+        $this->page->requires->js_call_amd('block_messagestreamblock/disableaibutton', 'init');
 
     if (strpos($PAGE->url->out(false), '/mod/book/view.php') !== false) {
       $this->page->requires->css('/blocks/messagestreamblock/style_safari_fix.css');

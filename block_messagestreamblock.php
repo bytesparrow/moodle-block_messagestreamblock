@@ -68,3 +68,4 @@ class block_messagestreamblock extends block_base {
     return true;
   }
 }
+

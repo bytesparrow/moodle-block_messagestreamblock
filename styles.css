@@ -78,10 +78,15 @@ MOBILE
 
 
 /*änderungen für stream*/
-#messagestream-popup .reply-form-container , #messagestream-popup .p-avatar 
+#messagestream-popup .reply-form-container , #messagestream-popup .p-avatar
 {
     display:none;
 }
+/*hide ai-button 
+#messagestream-popup div.action-checkboxes  div.flex:has(.ai-checked)
+{
+display: none !important;
+}*/
 #messagestream-popup div.child-comments::before
 {
     display: none;
