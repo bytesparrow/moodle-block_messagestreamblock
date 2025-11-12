@@ -11,11 +11,6 @@ export const init = () => {
                 }
             }, 100); // 100 Millisekunden Verzögerung
         });
-    } else
-    {
-        alert("noedit");
     }
-
-
 
 };
