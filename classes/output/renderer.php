@@ -78,12 +78,11 @@ class renderer extends \plugin_renderer_base {
     $contexttitle = trim(str_replace($removefromtitle, "", $currentpagetitle));
     $contexttitle = str_replace("Kap ", "Kapitel ", $contexttitle);
 
-    $contexttitle_clear = html_entity_decode($contexttitle); // Removes special chars.
     $promptoverride = "";
 
     //yes, send Context
-    if ($contexttitle_clear) {
-      $focustext = get_string("aicontextrefinementheading", "block_messagestreamblock") . get_string("aicontextrefinement", "block_messagestreamblock") . $contexttitle_clear;
+    if ($contexttitle) {
+      $focustext = get_string("aicontextrefinementheading", "block_messagestreamblock") . get_string("aicontextrefinement", "block_messagestreamblock") . $contexttitle;
     }
     else {
       $focustext = get_string("aicontextrefinementheading", "block_messagestreamblock") . get_string("aicontextrefinementnonce", "block_messagestreamblock");
@@ -93,6 +92,7 @@ class renderer extends \plugin_renderer_base {
     $promptoverride = "{{ DefaultSystemPrompt }}" . $focustext;
     if ($config && $config->promptrefinement) {
       $promptoverride .= "\n\n" . $config->promptrefinement;
+      $promptoverrideclear = str_replace('\'', '"', htmlspecialchars_decode($promptoverride));
     }
     /* $stream_options["promptOverride"] = '{{ DefaultSystemPrompt }}'."\n"
       . "mach was cooles!"; */
@@ -100,7 +100,7 @@ class renderer extends \plugin_renderer_base {
 
 
     if ($promptoverride) {
-      $stream_options["promptOverride"] = $promptoverride;
+      $stream_options["promptOverride"] = $promptoverrideclear;
     }
     // Use StreamService to get context and render the stream
     $service = new \local_nmstream\StreamService();
