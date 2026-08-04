@@ -54,10 +54,7 @@ class renderer extends \plugin_renderer_base {
     if (file_exists($CFG->dirroot . '/mod/messagestream/locallib.php')) {
 
       require_once($CFG->dirroot . '/mod/messagestream/locallib.php');
-      $aicourses = get_messagestream_ai_activated_in_courses();
-      if (in_array($courseid, $aicourses)) {
-        $enableai = true;
-      }
+      $enableai = \get_messagestream_ai_activated_in_course($courseid);
     }
 
     //set base stream options
@@ -90,6 +87,7 @@ class renderer extends \plugin_renderer_base {
 
 
     $promptoverride = "{{ DefaultSystemPrompt }}" . $focustext;
+    $promptoverrideclear = '';
     if ($config && $config->promptrefinement) {
       $promptoverride .= "\n\n" . $config->promptrefinement;
       $promptoverrideclear = str_replace('\'', '"', htmlspecialchars_decode($promptoverride));
@@ -99,7 +97,7 @@ class renderer extends \plugin_renderer_base {
 
 
 
-    if ($promptoverride) {
+    if ($promptoverrideclear) {
       $stream_options["promptOverride"] = $promptoverrideclear;
     }
     // Use StreamService to get context and render the stream
